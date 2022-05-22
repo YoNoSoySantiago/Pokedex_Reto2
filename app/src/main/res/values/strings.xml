@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Reto2_PokeDex</string>
+    <string name="mis_pokemon">Mis Pokemon</string>
+    <string name="ver">VER</string>
+    <string name="atrapar">ATRAPAR</string>
+    <string name="nombre_del_pokemon">Nombre del Pokemon</string>
+    <string name="soltar">SOLTAR</string>
+    <string name="todo">TODO</string>
+    <string name="pokenamexd">PokeNameXD</string>
+    <string name="defensa">Defensa</string>
+    <string name="textview">TextView</string>
+    <string name="ataque">Ataque</string>
+    <string name="type">Type</string>
+    <string name="velocidad">Velocidad</string>
+    <string name="vida">Vida</string>
+    <string name="_00">00</string>
+    <string name="date">date</string>
+    <string name="pokedex">POKEDEX</string>
+    <string name="ingresar">INGRESAR</string>
+    <string name="name">Name</string>
+</resources>
