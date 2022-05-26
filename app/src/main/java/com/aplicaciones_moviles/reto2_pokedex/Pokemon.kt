@@ -1,8 +1,9 @@
 package com.aplicaciones_moviles.reto2_pokedex
 
+import java.io.Serializable
 import java.util.*
 
-class Pokemon {
+class Pokemon : Serializable {
 
     //Profile Info
     var id: String
