@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reto2_PokeDex">
         <activity
-            android:name=".ViewPokeActivity"
+            android:name=".activity.ViewPokeActivity"
             android:exported="false" />
         <activity
-            android:name=".PokeDexActivity"
+            android:name=".activity.PokeDexActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

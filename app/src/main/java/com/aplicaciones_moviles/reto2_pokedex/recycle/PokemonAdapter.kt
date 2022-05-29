@@ -1,25 +1,24 @@
-package com.aplicaciones_moviles.reto2_pokedex
+package com.aplicaciones_moviles.reto2_pokedex.recycle
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.aplicaciones_moviles.reto2_pokedex.R
+import com.aplicaciones_moviles.reto2_pokedex.model.Pokemon
 import java.io.InputStream
 import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class PokemonAdapter : RecyclerView.Adapter<PokemonView>() {
 
-    private val pokes = ArrayList<Pokemon>()
-
-    init {
-        pokes.add(Pokemon())
-        pokes.add(Pokemon())
-        pokes.add(Pokemon())
-        pokes.add(Pokemon())
-        pokes.add(Pokemon())
-    }
+    private var pokes = ArrayList<Pokemon>()
+    var activityContext: Context? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonView {
 
@@ -31,7 +30,11 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonView>() {
 
     override fun onBindViewHolder(holder: PokemonView, position: Int) {
         holder.pokeName.text = pokes[position].name
-        holder.capturedDate.text = pokes[position].captured_date.toString()
+        val dateLong =  pokes[position].captured_date.toLong()
+        val date = Date(dateLong)
+        val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+        val datePo = format.format(date)
+        holder.capturedDate.text = datePo
 
         val thread = Thread {
             try {
@@ -49,7 +52,19 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonView>() {
     override fun getItemCount(): Int {
         return pokes.size
     }
+    fun addPokemon(poke: Pokemon){
+        this.pokes.add(poke)
+        notifyItemInserted(this.pokes.size-1)
+    }
+    fun setPokemons(pokemons: ArrayList<Pokemon>){
 
+        pokes = pokemons
+        notifyDataSetChanged()
+    }
+
+    fun deletePokemon(poke: Pokemon){
+        pokes.remove(poke)
+    }
     fun LoadImageFromWebOperations(url: String?): Drawable? {
         return try {
             val `is`: InputStream = URL(url).getContent() as InputStream
