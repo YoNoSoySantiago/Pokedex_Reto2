@@ -18,4 +18,7 @@
     <string name="pokedex">POKEDEX</string>
     <string name="ingresar">INGRESAR</string>
     <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="salir">SALIR</string>
+    <string name="volver">VOLVER</string>
 </resources>

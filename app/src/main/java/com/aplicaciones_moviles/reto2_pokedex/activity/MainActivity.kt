@@ -3,6 +3,7 @@ package com.aplicaciones_moviles.reto2_pokedex.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.aplicaciones_moviles.reto2_pokedex.databinding.ActivityMainBinding
 import com.aplicaciones_moviles.reto2_pokedex.model.User
@@ -56,7 +57,11 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-
+    override fun onBackPressed() {
+        // super.onBackPressed();
+        Toast.makeText(this, "accion no permitida", Toast.LENGTH_SHORT).show()
+        return
+    }
 }
 
 

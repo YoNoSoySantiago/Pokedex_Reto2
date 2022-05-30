@@ -2,18 +2,18 @@ package com.aplicaciones_moviles.reto2_pokedex.activity
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.aplicaciones_moviles.reto2_pokedex.databinding.ActivityViewPokeBinding
 import com.aplicaciones_moviles.reto2_pokedex.model.Pokemon
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.io.InputStream
 import java.net.URL
+
 
 private lateinit var binding: ActivityViewPokeBinding
 
@@ -53,13 +53,21 @@ class ViewPokeActivity : AppCompatActivity() {
         }
         thread.start()
 
+        binding.btnBack.setOnClickListener {
+            val intent = Intent(this, PokeDexActivity::class.java).apply {
+                putExtra("username", intent.extras?.getString("username_trainer"))
+            }
+            finish()
+            startActivity(intent)
+        }
+
         binding.btnCatchPoke.setOnClickListener{
             val intent = Intent(this, PokeDexActivity::class.java).apply {
                 putExtra("pokemon", pokemon)
                 putExtra("username", intent.extras?.getString("username_trainer"))
             }
-            startActivity(intent)
             finish()
+            startActivity(intent)
         }
         binding.btnFreePoke.setOnClickListener{
             val idPoke = intent.extras?.getString("id")
@@ -78,12 +86,11 @@ class ViewPokeActivity : AppCompatActivity() {
                 val intent = Intent(this, PokeDexActivity::class.java).apply {
                     putExtra("username", intent.extras?.getString("username_trainer"))
                 }
-                startActivity(intent)
                 finish()
+                startActivity(intent)
             }
         }
-
-        }
+    }
     fun LoadImageFromWebOperations(url: String?): Drawable? {
         return try {
             val `is`: InputStream = URL(url).getContent() as InputStream
@@ -93,4 +100,10 @@ class ViewPokeActivity : AppCompatActivity() {
             null
         }
     }
+
+    override fun onBackPressed() {
+        // super.onBackPressed();
+        Toast.makeText(this, "accion no permitida", Toast.LENGTH_SHORT).show()
+        return
     }
+}

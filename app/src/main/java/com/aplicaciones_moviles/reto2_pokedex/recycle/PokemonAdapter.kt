@@ -46,20 +46,15 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonView>() {
         }
         thread.start()
         holder.poke = pokes[position]
-
     }
 
     override fun getItemCount(): Int {
         return pokes.size
     }
+
     fun addPokemon(poke: Pokemon){
         this.pokes.add(poke)
         notifyItemInserted(this.pokes.size-1)
-    }
-    fun setPokemons(pokemons: ArrayList<Pokemon>){
-
-        pokes = pokemons
-        notifyDataSetChanged()
     }
 
     fun deletePokemon(poke: Pokemon){
@@ -73,5 +68,10 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonView>() {
             Log.d("Exception: ",e.toString())
             null
         }
+    }
+
+    fun clean() {
+        pokes = ArrayList<Pokemon>()
+        notifyDataSetChanged()
     }
 }

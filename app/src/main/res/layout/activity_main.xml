@@ -21,26 +21,29 @@
         android:layout_width="256dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:autofillHints=""
         android:ems="10"
+        android:hint="@string/username"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="@string/name"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="184dp"
         android:layout_marginTop="60dp"
+        android:contentDescription="@string/todo"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_title"
-        tools:srcCompat="@drawable/pokedex_logo"
-        android:contentDescription="@string/todo" />
+        app:srcCompat="@drawable/pokedex_logo"
+        tools:srcCompat="@drawable/pokedex_logo" />
 
     <Button
         android:id="@+id/btn_login"
